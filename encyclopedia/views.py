@@ -35,3 +35,9 @@ def search(request):
 			"articles_list": [],
 			"q": q
 			})
+
+def create(request):
+	if request.method == "GET":
+		return render(request, "encyclopedia/create.html")
+	elif request.method == "POST":
+		pass
