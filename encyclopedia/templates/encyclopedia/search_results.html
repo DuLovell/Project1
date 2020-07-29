@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Search results
+{% endblock %}
+
+{% block body %}
+<h1>Search results for "{{ q }}":</h1>
+<ul>
+{%  for article in articles_list %}
+	{% if q in article %}
+		<li><a href="{% url 'encyclopedia:entry' article %}">{{ article }}</a></li>
+
+	{% endif %}
+{% empty %}
+	<li>Nothing matching "{{ q }}" was found</li>
+
+{% endfor %}
+</ul>
+{% endblock %}
