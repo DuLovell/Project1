@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound, Http404, HttpResponse
 from markdown2 import Markdown
 from . import util
+from random import shuffle
 
 
 def index(request):
@@ -59,3 +60,9 @@ def edit(request, entry):
 		new_content = request.POST.get("content")
 		util.save_entry(entry, new_content)
 		return redirect("encyclopedia:entry", entry=entry)
+
+def random(request):
+	entries = util.list_entries()
+	shuffle(entries)
+	entry = entries[0]
+	return redirect("encyclopedia:entry", entry=entry)
