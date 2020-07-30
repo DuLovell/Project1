@@ -41,7 +41,7 @@ def create(request):
 	if request.method == "GET":
 		return render(request, "encyclopedia/create.html")
 	elif request.method == "POST":
-		title = request.POST.get("title")
+		title = request.POST.get("content").split()[1]
 		content = request.POST.get("content")
 		if title in util.list_entries():
 			return render(request, "encyclopedia/create_error.html")
