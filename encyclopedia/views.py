@@ -47,3 +47,15 @@ def create(request):
 		# Add .md file to 'entries' folder
 		util.save_entry(title, content)
 		return redirect("encyclopedia:entry", entry=title)
+
+def edit(request, entry):
+	content = util.get_entry(entry)
+	if request.method == "GET":
+		return render(request, "encyclopedia/edit.html", {
+			"entry": entry,
+			"content": content
+			})
+	elif request.method == "POST":
+		new_content = request.POST.get("content")
+		util.save_entry(entry, new_content)
+		return redirect("encyclopedia:entry", entry=entry)

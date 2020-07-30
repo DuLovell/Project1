@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Create new page
+{% endblock %}
+
+
+{% block body %}
+<form action="{{entry}}" method="post">
+	{% csrf_token %}
+	<br>
+	<h2 style="margin-left: 40px">Edit page</h2>
+	<hr>
+	<textarea name="content" id="content" placeholder="Enter Markdown text" style="height: 600px; width: 60%; margin: 20px 45px; padding:5px; outline: none; box-shadow: 1px 1px 3px 2px rgba(0,0,0,0.1); border-color: gray">{{ content }}</textarea>
+	<br>
+	<button type="submit" style="position: relative; left: 806px; border-radius: 2px; padding: 1px 5px 1px; font-size: 18px">Edit Page</button>
+</form>
+{% endblock %}

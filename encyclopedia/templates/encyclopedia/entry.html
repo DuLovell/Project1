@@ -6,4 +6,6 @@
 
 {% block body %}
 {{ article|safe }}
+<hr>
+<a href="{% url 'encyclopedia:edit' title %}">Edit page</a>
 {% endblock %}
